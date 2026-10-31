@@ -25,13 +25,14 @@ jobs:
       - name: Grant execute permission
         run: chmod +x gradlew
 
+      - name: Debug
+        run: find . -name "build.gradle" -o -name "settings.gradle" | head -20
+
       - name: Build
-        run: |
-          cd "New Folder"
-          ../gradlew build
+        run: ./gradlew build
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: valdorianrpg
-          path: "New Folder/build/libs/*.jar"
+          path: build/libs/*.jar
